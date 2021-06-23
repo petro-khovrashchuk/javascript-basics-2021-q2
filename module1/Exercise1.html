@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const swapCharCase = function(char) {
+      const upper = /[A-Z]/;
+      const lower = /[a-z]/;
+
+      if(upper.test(char)) {
+        return char.toLowerCase();
+      } else if(lower.test(char)) {
+        return char.toUpperCase();
+      }
+      return char;
+    };
+
+    const changeCase = function(str) {
+      let resultString = '';
+      [...str].forEach(char => resultString += swapCharCase(char));
+      return resultString;
+    };
+
+    console.log(changeCase("21century")); // Output: 21CENTURY
+    console.log(changeCase("Hybris")); // Output: hYBRIS
+
+  </script>
+</body>
+
+</html>
