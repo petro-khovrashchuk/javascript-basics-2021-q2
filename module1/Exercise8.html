@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const addZeroInFrontIfLessThenTen = function(number) {
+      if(number < 10) {
+      return `0${number}`;
+      }
+      return `${number}`;
+    };
+
+    const getTwoLastDigitsOfTheYear = function(year) {
+      return year.toString().slice(2);
+    };
+
+    const getFormattedDateString = function(date) {
+      return `${addZeroInFrontIfLessThenTen(date.getDate())}.${addZeroInFrontIfLessThenTen(date.getMonth()+1)}.${getTwoLastDigitsOfTheYear(date.getFullYear())}`
+    };
+
+    const formatDate = function(date) {
+      if(typeof date === 'string' || typeof date === 'number') {
+        return getFormattedDateString(new Date(date));
+      } else if(Array.isArray(date)) {
+        return getFormattedDateString(new Date(date[0], date[1], date[2]));
+      } else if(typeof date === 'object') {
+        return getFormattedDateString(date);
+      }
+    };
+
+    console.log( formatDate('2011-10-02') ); // 02.10.11
+    console.log( formatDate(1234567890000) ); // 14.02.09
+    console.log( formatDate([2014, 0, 1]) ); // 01.01.14
+    console.log( formatDate(new Date(2014, 0, 1)) ); // 01.01.14
+
+  </script>
+</body>
+
+</html>
