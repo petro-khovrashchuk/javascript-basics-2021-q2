@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const areArrayEqual = function(arrayOne, arrayTwo) {
+      return arrayOne.length === arrayTwo.length
+      && arrayOne.every((value, index) => value === arrayTwo[index]);
+    }
+
+    const areValuesEqual = function(valueOne, valueTwo) {
+        if (typeof valueOne !== typeof valueTwo) {
+          return false;
+        }
+        let result = true;
+        if(Array.isArray(valueOne) && Array.isArray(valueTwo)) {
+          result = result && areArrayEqual(valueOne, valueTwo);
+        } else if(typeof valueOne === 'object') {
+          result = result && deepEqual(valueOne, valueTwo);
+        } else {
+          result = result && valueOne === valueTwo;
+        }
+        return result;
+    }
+
+    const deepEqual = function(objectOne, objectTwo) {
+      if(!areArrayEqual(Object.keys(objectOne), Object.keys(objectTwo))) {
+        return false;
+      }
+
+      let result = true;
+      for(key of Object.keys(objectOne)) {
+        if (result === false) {
+          return false;
+        }
+        result = areValuesEqual(objectOne[key], objectTwo[key]);
+      }
+      return result;
+    };  
+
+    let obj = {here: {is: "an"}, object: 2};
+    console.log(deepEqual(obj, obj)); // Output: true
+    console.log(deepEqual(obj, {here: 1, object: 2})); // Output: false
+    console.log(deepEqual(obj, {here: {is: "an"}, object: 2})); // Output: true
+
+  </script>
+</body>
+
+</html>
