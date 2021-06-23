@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const getArrayElementsPairs = function(arrayOne, arrayTwo) {
+      resultArray = [];
+      for(arrayOneElement of arrayOne) {
+        for(arrayTwoElement of arrayTwo) {
+          resultArray.push([arrayOneElement, arrayTwoElement])
+        }
+      }
+      return resultArray;
+    };  
+
+    console.log(getArrayElementsPairs([1, 2], ['a', 'b'])); // Output: [[1, “a”], [1, “b”], [2, “a”], [2, “b”]]
+
+  </script>
+</body>
+
+</html>
