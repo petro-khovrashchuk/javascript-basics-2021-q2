@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const getMinElement = function(array) {
+      let result = null;
+      for(element of array) {
+        if(result === null || element < result) {
+          result = element;
+        }
+      }
+      return result;
+    };
+
+    const sort = function(array) {
+      const arrayCopy = [...array];
+      let result = [];
+      for(i = 0; i < array.length; i++) {
+        let currentMinElement = getMinElement(arrayCopy);
+        result.push(currentMinElement);
+        arrayCopy.splice(arrayCopy.indexOf(currentMinElement), 1);
+      }
+      return result;
+    };
+
+    const getSecondMinimum = function(array) {
+      const sortedArray = sort(array);
+      if(sortedArray.length > 1) {
+        return sortedArray[1];
+      }
+      return sortedArray[0];
+    };  
+
+    console.log(getSecondMinimum([5,0,7,3,8])); // Output: 3
+
+  </script>
+</body>
+
+</html>
