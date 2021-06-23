@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const removeFromArrayIfElementExistsMoreThanOnce = function(resultArray, element) {
+      const numOfCopies = resultArray.filter(resEl => resEl === element ).length;
+      if (numOfCopies === 1) {
+        return;
+      }
+      for(let i = 0; i < numOfCopies; i++) {
+        resultArray.splice(resultArray.indexOf(element), 1);
+      }
+    };
+
+    const filterNonUnique = function(array) {
+      let resultArray = [...array];
+      array.forEach(element => removeFromArrayIfElementExistsMoreThanOnce(resultArray, element));
+      return resultArray;
+    };  
+
+    console.log(filterNonUnique([1, 2, 2, 3, 4, 4, 5])); // Output: [1,3,5]
+    console.log(filterNonUnique([1, 2, 3, 4])); // Output: [1,2,3,4]
+
+  </script>
+</body>
+
+</html>
