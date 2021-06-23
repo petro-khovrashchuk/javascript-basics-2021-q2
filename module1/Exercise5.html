@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <script>
+
+    const doubleEveryEven = function(array) {
+      const result = [];
+      array.forEach(element => {
+        if(element % 2 === 0) {
+          result.push(element * 2);
+        } else {
+          result.push(element);
+        }
+      });
+      return result;
+    };
+
+    console.log(doubleEveryEven([2,0,7,3,8,4])); // Output: [4,0,7,3,16,8]
+
+  </script>
+</body>
+
+</html>
